@@ -13,7 +13,7 @@ const options = [
 	{ value: '1-1-training', label: '1-1 Training / initial assessment' },
 	{ value: 'home-visit', label: 'Pre-puppy or new dog home visit' },
 	...courses.map((c) => ({ value: c.id, label: `${c.data.title} (${c.data.price})` })),
-	...getOffers().map((o) => ({ value: o.id, label: o.price ? `${o.title} (${o.price})` : o.title })),
+	...getOffers().map((o) => ({ value: o.id, label: o.highlight ? `${o.title} (${o.highlight})` : o.title })),
 	{ value: 'other', label: 'Something else' },
 ];
 const tel = settings.phone.replace(/\s/g, '');

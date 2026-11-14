@@ -4,7 +4,7 @@ export interface Offer {
 	id: string;
 	label: string;
 	title: string;
-	price: string;
+	highlight: string;
 	text: string;
 	image: string;
 	imageAlt: string;
@@ -33,7 +33,7 @@ export function getOffers(): Offer[] {
 				id,
 				label: o.label?.trim() ?? '',
 				title: o.title.trim(),
-				price: o.price?.trim() ?? '',
+				highlight: o.highlight?.trim() ?? '',
 				text: o.text?.trim() ?? '',
 				image: o.image?.trim() ?? '',
 				imageAlt: o.imageAlt?.trim() ?? '',

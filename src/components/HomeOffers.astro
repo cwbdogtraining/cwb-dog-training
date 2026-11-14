@@ -23,7 +23,7 @@ const offers = getOffers();
 							<h2>{o.title}</h2>
 							{o.text && <p>{o.text}</p>}
 							<div class="offer__foot">
-								{o.price && <span class="offer__price">{o.price}</span>}
+								{o.highlight && <span class="offer__highlight">{o.highlight}</span>}
 								<a class="btn" href={o.href} target={o.external ? '_blank' : undefined} rel={o.external ? 'noopener' : undefined}>
 									{o.buttonText} <Icon name="arrow" />
 								</a>
@@ -102,7 +102,7 @@ const offers = getOffers();
 		align-items: center;
 		gap: 1rem 1.5rem;
 	}
-	.offer__price {
+	.offer__highlight {
 		font-family: var(--font-display);
 		font-weight: 800;
 		font-size: 2.4rem;

@@ -154,11 +154,11 @@ content:
           - { name: showUntil, label: "Take it down automatically after this date (optional)", type: date }
           - { name: label, label: "Small label above the title (e.g. Christmas gift idea)", type: string }
           - { name: title, label: Title, type: string, required: true }
-          - { name: price, label: "Price (optional, e.g. £35)", type: string }
+          - { name: highlight, label: "Big text next to the button (optional, e.g. £35 off, or a price like £50)", type: string }
           - { name: text, label: Description, type: text }
           - { name: image, label: Photo, type: image }
           - { name: imageAlt, label: Photo description, type: string }
-          - { name: buttonText, label: "Button text (e.g. Buy a voucher)", type: string }
+          - { name: buttonText, label: "Button text (e.g. Claim your voucher)", type: string }
           - { name: buttonLink, label: "Button link (optional). Paste a Bookwhen or other link, or leave empty to open the enquiry form with this offer chosen", type: string }
 
   - name: packages
