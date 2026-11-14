@@ -1,0 +1,112 @@
+---
+import Icon from './Icon.astro';
+import { getOffers } from '../lib/offers';
+
+// Seasonal offers and vouchers, managed in Pages CMS → "Homepage offers".
+// Nothing is shown when no offer is switched on.
+const offers = getOffers();
+---
+
+{
+	offers.length > 0 && (
+		<section class="section offers" aria-label="Offers">
+			<div class="container offers__list">
+				{offers.map((o) => (
+					<article class="offer reveal" data-show-until={o.showUntil || undefined}>
+						{o.image && (
+							<div class="offer__media">
+								<img src={o.image} alt={o.imageAlt} loading="lazy" />
+							</div>
+						)}
+						<div class="offer__body">
+							{o.label && <span class="tag tag--signal">{o.label}</span>}
+							<h2>{o.title}</h2>
+							{o.text && <p>{o.text}</p>}
+							<div class="offer__foot">
+								{o.price && <span class="offer__price">{o.price}</span>}
+								<a class="btn" href={o.href} target={o.external ? '_blank' : undefined} rel={o.external ? 'noopener' : undefined}>
+									{o.buttonText} <Icon name="arrow" />
+								</a>
+							</div>
+						</div>
+					</article>
+				))}
+			</div>
+		</section>
+	)
+}
+
+<script>
+	// Hide offers whose "show until" date has passed since the site was last rebuilt
+	const today = new Date().toISOString().slice(0, 10);
+	document.querySelectorAll<HTMLElement>('[data-show-until]').forEach((el) => {
+		if (el.dataset.showUntil! < today) el.remove();
+	});
+	document.querySelectorAll('.offers').forEach((s) => {
+		if (!s.querySelector('.offer')) s.remove();
+	});
+</script>
+
+<style>
+	.offers {
+		padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+	}
+	.offers__list {
+		display: grid;
+		gap: 1.5rem;
+	}
+	.offer {
+		display: grid;
+		background: #fff;
+		border: 2px solid var(--signal);
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+		box-shadow: var(--shadow);
+	}
+	@media (min-width: 820px) {
+		.offer {
+			grid-template-columns: 1.1fr 1fr;
+		}
+	}
+	.offer__media {
+		aspect-ratio: 16 / 9;
+		min-height: 100%;
+	}
+	.offer__media img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+	.offer__body {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.8rem;
+		padding: clamp(1.4rem, 3vw, 2.4rem);
+	}
+	.offer__body h2 {
+		margin: 0.2rem 0 0;
+		font-size: clamp(2rem, 3.6vw, 2.8rem);
+	}
+	.offer__body p {
+		margin: 0;
+		color: var(--muted);
+		font-size: 1.05rem;
+	}
+	.offer__foot {
+		margin-top: auto;
+		padding-top: 0.8rem;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 1rem 1.5rem;
+	}
+	.offer__price {
+		font-family: var(--font-display);
+		font-weight: 800;
+		font-size: 2.4rem;
+		line-height: 1;
+		color: var(--navy);
+	}
+</style>

@@ -139,6 +139,28 @@ content:
       - { name: legalNotice, label: "Business details for the footer, if required (e.g. registered company name and number, VAT number)", type: string }
       - { name: web3formsKey, label: Web3Forms access key (contact form), type: string }
 
+  - name: offers
+    label: Homepage offers (vouchers, seasonal deals)
+    type: file
+    path: src/data/offers.json
+    format: json
+    fields:
+      - name: offers
+        label: "Offers. Tick “Show on the homepage” to put one on the site, untick to take it off. Nothing shows when all are unticked"
+        type: object
+        list: true
+        fields:
+          - { name: show, label: Show on the homepage, type: boolean }
+          - { name: showUntil, label: "Take it down automatically after this date (optional)", type: date }
+          - { name: label, label: "Small label above the title (e.g. Christmas gift idea)", type: string }
+          - { name: title, label: Title, type: string, required: true }
+          - { name: price, label: "Price (optional, e.g. £35)", type: string }
+          - { name: text, label: Description, type: text }
+          - { name: image, label: Photo, type: image }
+          - { name: imageAlt, label: Photo description, type: string }
+          - { name: buttonText, label: "Button text (e.g. Buy a voucher)", type: string }
+          - { name: buttonLink, label: "Button link (optional). Paste a Bookwhen or other link, or leave empty to open the enquiry form with this offer chosen", type: string }
+
   - name: packages
     label: 1-1 packages
     type: file
