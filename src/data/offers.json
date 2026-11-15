@@ -1,16 +1,16 @@
 {
   "offers": [
     {
-      "show": false,
+      "show": true,
       "showUntil": "2026-12-25",
       "label": "Christmas gift idea",
       "title": "Christmas Voucher",
-      "highlight": "£35 off",
-      "text": "Fancy a Christmas gift for a dog lover? This voucher will take £35 off any training package here.",
+      "highlight": "£35 ",
+      "text": "Fancy a Christmas gift for a dog lover? Are they always difficult to buy for? This voucher will take £35 off any training package here. ",
       "image": "/images/image_c6f2b0fd.jpg",
       "imageAlt": "Black Labrador in a Santa hat and tartan bandana sitting by a Christmas tree and fireplace",
-      "buttonText": "Claim your voucher",
-      "buttonLink": ""
+      "buttonText": "Purchase your voucher",
+      "buttonLink": "https://buy.stripe.com/14AbJ39dbcfDa652sFgEg00"
     }
   ]
 }
